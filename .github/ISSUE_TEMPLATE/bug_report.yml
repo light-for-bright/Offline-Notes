@@ -1,4 +1,4 @@
-name: 🐛 Bug Report
+name: 🐛 Багрепорт
 description: Сообщить об ошибке в приложении Offline Notes
 title: "[BUG] "
 labels: ["bug", "needs-triage"]
