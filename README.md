@@ -34,7 +34,7 @@ Offline Notes - это приложение для сохранения веб-�
 
 ```bash
 # 1. Клонируйте репозиторий
-git clone https://github.com/light-for-bright/Offline_Notes.git
+git clone https://github.com/light-for-bright/Offline-Notes.git
 cd Offline_Notes
 
 # 2. Откройте проект в Android Studio
@@ -96,16 +96,6 @@ cd Offline_Notes
 - Android SDK API 24+
 - Gradle 7.0+
 
-### Структура проекта
-```
-app/
-├── src/main/java/          # Kotlin код
-├── src/main/res/           # Ресурсы
-└── build.gradle.kts        # Конфигурация модуля
-docs/                       # Документация
-releases/                   # APK файлы
-```
-
 ### Основные зависимости
 - Room Database
 - Retrofit + OkHttp
@@ -116,8 +106,3 @@ releases/                   # APK файлы
 ## 📄 Лицензия
 
 MIT License - см. [LICENSE](LICENSE) файл
-
----
-
-**Создано:** 2025  
-**Статус:** MVP готов к тестированию 🚀
