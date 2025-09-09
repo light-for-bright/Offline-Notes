@@ -1,14 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 📖 Документация
-    url: https://github.com/your-username/Offline_Notes/wiki
-    about: Ознакомьтесь с документацией проекта
-  - name: 💬 Обсуждения
-    url: https://github.com/your-username/Offline_Notes/discussions
-    about: Задавайте вопросы и обсуждайте идеи с сообществом
   - name: 🐛 Багрепорты
-    url: https://github.com/your-username/Offline_Notes/issues/new?template=bug_report.yml
+    url: https://github.com/light-for-bright/Offline-Notes/issues/new?template=bug_report.yml
     about: Сообщить об ошибке в приложении
   - name: ✨ Предложения функций
-    url: https://github.com/your-username/Offline_Notes/issues/new?template=feature_request.yml
+    url: https://github.com/light-for-bright/Offline-Notes/issues/new?template=feature_request.yml
     about: Предложить новую функцию
