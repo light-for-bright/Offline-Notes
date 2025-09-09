@@ -1,3 +1,83 @@
 <resources>
-    <string name="app_name">Offline Notes</string>
+    <string name="app_name">Офлайн Заметки</string>
+    
+    <!-- Main Activity -->
+    <string name="github_link">📱 Посмотреть на GitHub</string>
+    <string name="empty_notes">📝 Пока нет заметок\n\nНажмите + чтобы добавить первую заметку</string>
+    <string name="add_note">Добавить</string>
+    <string name="cancel">Отмена</string>
+    <string name="enter_url">Введите URL веб-страницы</string>
+    <string name="please_enter_url">Пожалуйста, введите URL</string>
+    <string name="delete_note">🗑️ Удалить заметку</string>
+    <string name="delete_confirm">Вы уверены, что хотите удалить \'%s\'?\n\nЭто действие нельзя отменить.</string>
+    <string name="delete">Удалить</string>
+    <string name="note_deleted">Заметка удалена</string>
+    <string name="note_added">✅ Добавлено: %s</string>
+    <string name="error_adding_note">❌ Ошибка: %s</string>
+    <string name="error_opening_note">Ошибка открытия заметки: %s</string>
+    <string name="app_working">Приложение работает! Попробуйте добавить URL вручную.</string>
+    <string name="failed_open_github">Не удалось открыть репозиторий GitHub</string>
+    
+    <!-- Share Activity -->
+    <string name="processing_link">Обрабатываем ссылку...</string>
+    <string name="share_description">Веб-страница будет преобразована в Markdown и сохранена офлайн</string>
+    
+    <!-- Dialog Add URL -->
+    <string name="add_web_page">📄 Добавить веб-страницу</string>
+    <string name="page_will_be_converted">💾 Страница будет преобразована в Markdown и сохранена офлайн</string>
+    
+    <!-- Viewer Activity -->
+    <string name="error_loading_note">Ошибка загрузки заметки</string>
+    <string name="failed_initialize_viewer">Не удалось инициализировать просмотрщик: %s</string>
+    <string name="invalid_note">Неверная заметка</string>
+    <string name="error_loading_note_content">Ошибка загрузки содержимого заметки: %s</string>
+    <string name="failed_load_note_content">Не удалось загрузить содержимое заметки</string>
+    <string name="error_displaying_content">Ошибка отображения содержимого: %s</string>
+    <string name="error_converting_content">Ошибка преобразования содержимого: %s</string>
+    <string name="error_converting_markdown">Ошибка преобразования markdown: %s</string>
+    <string name="failed_setup_observer">Не удалось настроить наблюдатель: %s</string>
+    <string name="failed_initialize_viewer_general">Не удалось инициализировать просмотрщик</string>
+    
+    <!-- Item Note -->
+    <string name="note_title">Заголовок заметки</string>
+    <string name="example_url">https://example.com</string>
+    <string name="example_date">10 янв 2025</string>
+    <string name="example_size">1.2 КБ</string>
+    
+    <!-- Error Messages -->
+    <string name="error_initialization_app">Ошибка инициализации приложения</string>
+    <string name="error_initialization_data">Ошибка инициализации данных</string>
+    <string name="note_not_found">Заметка не найдена</string>
+    <string name="failed_load_note">Не удалось загрузить заметку: %s</string>
+    <string name="failed_fetch_webpage">Не удалось загрузить веб-страницу: %s</string>
+    <string name="failed_convert_html">Не удалось преобразовать HTML в Markdown: %s</string>
+    <string name="failed_save_note">Не удалось сохранить заметку: %s</string>
+    <string name="network_error">Ошибка сети: %s</string>
+    <string name="parsing_error">Ошибка парсинга: %s</string>
+    <string name="file_error">Ошибка файла: %s</string>
+    <string name="database_error">Ошибка базы данных: %s</string>
+    
+    <!-- Success Messages -->
+    <string name="note_saved_successfully">Заметка успешно сохранена</string>
+    <string name="note_updated_successfully">Заметка успешно обновлена</string>
+    <string name="note_deleted_successfully">Заметка успешно удалена</string>
+    <string name="webpage_loaded_successfully">Веб-страница успешно загружена</string>
+    <string name="conversion_completed_successfully">Преобразование успешно завершено</string>
+    
+    <!-- Loading Messages -->
+    <string name="loading_note">Загружаем заметку...</string>
+    <string name="loading_webpage">Загружаем веб-страницу...</string>
+    <string name="converting_content">Преобразуем содержимое...</string>
+    <string name="saving_note">Сохраняем заметку...</string>
+    
+    <!-- Date Formats -->
+    <string name="date_format">dd MMM yyyy</string>
+    <string name="time_format">HH:mm</string>
+    <string name="datetime_format">dd MMM yyyy, HH:mm</string>
+    
+    <!-- File Sizes -->
+    <string name="bytes">%d байт</string>
+    <string name="kilobytes">%.1f КБ</string>
+    <string name="megabytes">%.1f МБ</string>
+    <string name="gigabytes">%.1f ГБ</string>
 </resources>

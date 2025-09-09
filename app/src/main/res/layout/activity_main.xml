@@ -15,34 +15,61 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary" />
+            android:background="?attr/colorPrimary"
+            app:title="@string/app_name"
+            app:titleTextColor="?attr/colorOnPrimary" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/item_note" />
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-           <com.google.android.material.floatingactionbutton.FloatingActionButton
-               android:id="@+id/fab"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_gravity="bottom|end"
-               android:layout_margin="16dp"
-               android:contentDescription="Add new note"
-               app:srcCompat="@android:drawable/ic_menu_add"
-               app:tint="@android:color/white" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="8dp"
+            tools:listitem="@layout/item_note" />
+
+        <!-- GitHub link at bottom -->
+        <TextView
+            android:id="@+id/githubLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:text="@string/github_link"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="12sp"
+            android:background="?attr/selectableItemBackground"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="Add new note"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        app:tint="@android:color/white" />
 
     <TextView
         android:id="@+id/emptyView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="📝 No notes yet\n\nTap + to add your first note"
+        android:text="@string/empty_notes"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textColor="?android:attr/textColorSecondary"

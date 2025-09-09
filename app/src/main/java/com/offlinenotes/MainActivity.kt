@@ -2,6 +2,7 @@ package com.offlinenotes
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -32,13 +33,14 @@ class MainActivity : AppCompatActivity() {
             setupToolbar()
         } catch (e: Exception) {
             Logger.e("Failed to initialize MainActivity", e)
-            Toast.makeText(this, "Ошибка инициализации приложения", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.error_initialization_app), Toast.LENGTH_LONG).show()
             finish()
             return
         }
         setupRecyclerView()
         setupViewModel()
         setupFab()
+        setupGithubLink()
         observeViewModel()
         
         // Тестируем функциональность
@@ -75,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         } catch (e: Exception) {
             Logger.e("Failed to initialize ViewModel", e)
-            Toast.makeText(this, "Ошибка инициализации данных", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.error_initialization_data), Toast.LENGTH_LONG).show()
             finish()
         }
     }
@@ -83,6 +85,12 @@ class MainActivity : AppCompatActivity() {
     private fun setupFab() {
         binding.fab.setOnClickListener {
             showAddUrlDialog()
+        }
+    }
+
+    private fun setupGithubLink() {
+        binding.githubLink.setOnClickListener {
+            openGithubRepository()
         }
     }
 
@@ -106,10 +114,10 @@ class MainActivity : AppCompatActivity() {
             result?.let {
                 when (it) {
                     is com.offlinenotes.data.repository.AddNoteResult.Success -> {
-                        showToast("✅ Added: ${it.note.title}")
+                        showToast(getString(R.string.note_added, it.note.title))
                     }
                     is com.offlinenotes.data.repository.AddNoteResult.Error -> {
-                        showToast("❌ Error: ${it.message}")
+                        showToast(getString(R.string.error_adding_note, it.message))
                     }
                 }
                 viewModel.clearAddNoteResult()
@@ -129,6 +137,8 @@ class MainActivity : AppCompatActivity() {
     private fun updateEmptyView(isEmpty: Boolean) {
         binding.emptyView.visibility = if (isEmpty) View.VISIBLE else View.GONE
         binding.recyclerView.visibility = if (isEmpty) View.GONE else View.VISIBLE
+        // Показываем GitHub ссылку всегда
+        binding.githubLink.visibility = View.VISIBLE
     }
 
     private fun showAddUrlDialog() {
@@ -136,7 +146,7 @@ class MainActivity : AppCompatActivity() {
         
         val dialog = AlertDialog.Builder(this)
             .setView(dialogBinding.root)
-            .setPositiveButton("Add") { _, _ ->
+            .setPositiveButton(getString(R.string.add_note)) { _, _ ->
                 val url = dialogBinding.urlInput.text.toString().trim()
                 if (url.isNotEmpty()) {
                     // Простая валидация URL
@@ -148,10 +158,10 @@ class MainActivity : AppCompatActivity() {
                     }
                     addNoteFromUrl(finalUrl)
                 } else {
-                    showToast("Please enter a URL")
+                    showToast(getString(R.string.please_enter_url))
                 }
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(getString(R.string.cancel), null)
             .create()
         
         dialog.show()
@@ -162,13 +172,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun showDeleteDialog(note: Note) {
         AlertDialog.Builder(this)
-            .setTitle("🗑️ Delete Note")
-            .setMessage("Are you sure you want to delete '${note.title}'?\n\nThis action cannot be undone.")
-            .setPositiveButton("Delete") { _, _ ->
+            .setTitle(getString(R.string.delete_note))
+            .setMessage(getString(R.string.delete_confirm, note.title))
+            .setPositiveButton(getString(R.string.delete)) { _, _ ->
                 viewModel.deleteNote(note)
-                showToast("Note deleted")
+                showToast(getString(R.string.note_deleted))
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(getString(R.string.cancel), null)
             .show()
     }
 
@@ -190,12 +200,24 @@ class MainActivity : AppCompatActivity() {
             Logger.d("Successfully started ViewerActivity")
         } catch (e: Exception) {
             Logger.e("Error opening note viewer for: ${note.title}", e)
-            showToast("Error opening note: ${e.message}")
+            showToast(getString(R.string.error_opening_note, e.message ?: "Unknown error"))
         }
     }
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun openGithubRepository() {
+        try {
+            val githubUrl = "https://github.com/light-for-bright/Offline-Notes"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(githubUrl))
+            startActivity(intent)
+            Logger.d("Opening GitHub repository: $githubUrl")
+        } catch (e: Exception) {
+            Logger.e("Failed to open GitHub repository", e)
+            showToast(getString(R.string.failed_open_github))
+        }
     }
 
     private fun testAppFunctionality() {
@@ -204,7 +226,7 @@ class MainActivity : AppCompatActivity() {
         
         // Тестируем только UI без загрузки веб-страниц
         binding.root.postDelayed({
-            showToast("App is working! Try adding a URL manually.")
+            showToast(getString(R.string.app_working))
         }, 2000L)
     }
 }
